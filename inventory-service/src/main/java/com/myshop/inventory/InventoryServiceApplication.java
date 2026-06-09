@@ -7,7 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class InventoryServiceApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(InventoryServiceApplication.class, args);
+		System.out.println("welcome to inventory application!!");
 	}
 
 }
