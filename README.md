@@ -10,6 +10,8 @@ A highly scalable and modular backend system for an e-commerce platform.
 - Inventory management
 - Payment management
 - AI services
+- Common service
+- Service discovery
 
 
 ## 🛠️ Tech Stack
@@ -18,6 +20,7 @@ A highly scalable and modular backend system for an e-commerce platform.
 - Java 21
 - Spring Boot
 - Spring MVC
+- Spring Cloud
 - Spring Data JPA
 - Hibernate
 
