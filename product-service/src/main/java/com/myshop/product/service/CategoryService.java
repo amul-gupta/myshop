@@ -15,12 +15,12 @@ public interface CategoryService {
     CategoryDto update(UUID uuid, CategoryDto categoryDto);
 
     //delete
-    boolean delete(UUID uuid);
+    boolean delete(UUID id);
 
     //get all
     List<CategoryDto> getAllCategory();
 
     //get single by id
-    CategoryDto getCategoryById(UUID uuid);
+    CategoryDto getCategoryById(UUID id);
 
 }

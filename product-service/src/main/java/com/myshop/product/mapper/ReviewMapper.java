@@ -17,7 +17,7 @@ public class ReviewMapper {
     public Review toEntity(ReviewDto reviewDto)
     {
         return Review.builder()
-                .uuid(reviewDto.getUuid())
+                .id(reviewDto.getId())
                 .title(reviewDto.getTitle())
                 .comment(reviewDto.getComment())
                 .rating(reviewDto.getRating())
@@ -28,7 +28,7 @@ public class ReviewMapper {
     public ReviewDto toDto(Review review)
     {
         return ReviewDto.builder()
-                .uuid(review.getUuid())
+                .id(review.getId())
                 .title(review.getTitle())
                 .comment(review.getComment())
                 .rating(review.getRating())

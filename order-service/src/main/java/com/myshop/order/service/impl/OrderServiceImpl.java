@@ -8,6 +8,7 @@ import com.myshop.order.dto.CreateOrderRequest;
 import com.myshop.order.dto.OrderItemResponse;
 import com.myshop.order.dto.OrderResponse;
 import com.myshop.order.entity.*;
+import com.myshop.order.producer.OrderEventProducer;
 import com.myshop.order.repository.CartRepository;
 import com.myshop.order.repository.OrderRepository;
 import com.myshop.order.service.OrderService;
@@ -19,6 +20,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
+import com.myshop.common.event.OrderCreatedEvent;
 
 @Service
 @RequiredArgsConstructor
@@ -31,11 +33,17 @@ public class OrderServiceImpl implements OrderService {
     private final ProductClient productClient;
     private final InventoryClient inventoryClient;
 
+    private final OrderEventProducer orderEventProducer;
+
     @Override
     public OrderResponse createOrder(CreateOrderRequest request) {
 
-        Cart cart = cartRepository.findByUserId(request.getUserId())
-                .orElseThrow(() -> new RuntimeException("Cart not found"));
+        Cart cart = cartRepository
+                .findByUserIdAndCartStatus(
+                        request.getUserId(),
+                        CartStatus.ACTIVE
+                )
+                .orElseThrow(() -> new RuntimeException("Active cart not found"));
 
         if (cart.getCartItemList().isEmpty()) {
             throw new RuntimeException("Cart is empty");
@@ -109,8 +117,18 @@ public class OrderServiceImpl implements OrderService {
         cart.getCartItemList().clear();
         cart.setCartStatus(CartStatus.CHECKED_OUT);
         cart.setCheckedOutAt(LocalDateTime.now());
-
         cartRepository.save(cart);
+
+
+        //publish order created event
+        OrderCreatedEvent event = OrderCreatedEvent.builder()
+                .orderId(savedOrder.getId())
+                .userId(savedOrder.getUserId())
+                .amount(savedOrder.getTotalAmount())
+                .paymentMethod(savedOrder.getPaymentMethod().name())
+                .build();
+
+        orderEventProducer.publish(event);
 
         return mapToResponse(savedOrder);
     }

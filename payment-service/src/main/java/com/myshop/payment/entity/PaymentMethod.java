@@ -1,4 +1,4 @@
-package com.myshop.order.entity;
+package com.myshop.payment.entity;
 
 public enum PaymentMethod {
 

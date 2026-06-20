@@ -12,7 +12,7 @@ import java.util.UUID;
 @Builder
 public class ReviewDto {
 
-    private UUID uuid;
+    private UUID id;
 
     private String title;
     private String comment;

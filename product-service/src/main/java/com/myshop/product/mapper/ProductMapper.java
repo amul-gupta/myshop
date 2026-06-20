@@ -11,7 +11,7 @@ public class ProductMapper {
     public Product toEntity(ProductDto productDto) {
 
         return Product.builder()
-                .uuid(productDto.getUuid())
+                .id(productDto.getId())
                 .title(productDto.getTitle())
                 .shortDesc(productDto.getShortDesc())
                 .longDesc(productDto.getLongDesc())
@@ -25,7 +25,7 @@ public class ProductMapper {
     public ProductDto toDto(Product product) {
 
         return ProductDto.builder()
-                .uuid(product.getUuid())
+                .id(product.getId())
                 .title(product.getTitle())
                 .shortDesc(product.getShortDesc())
                 .longDesc(product.getLongDesc())

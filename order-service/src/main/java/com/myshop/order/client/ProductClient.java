@@ -12,7 +12,7 @@ import java.util.UUID;
 @FeignClient(name = "PRODUCT-SERVICE")
 public interface ProductClient {
 
-    @GetMapping("/api/products/{productId}")
+    @GetMapping("products/{productId}")
     ProductResponse getProductById(@PathVariable UUID productId);
 
 }

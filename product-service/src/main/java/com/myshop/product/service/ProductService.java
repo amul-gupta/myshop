@@ -14,14 +14,14 @@ public interface ProductService {
     ProductDto update(UUID uuid, ProductDto productDto);
 
     //delete
-    boolean delete(UUID uuid);
+    boolean delete(UUID id);
 
     //get all
     List<ProductDto> getAllProduct();
 
     //get single by id
-    ProductDto getProductById(UUID uuid);
+    ProductDto getProductById(UUID id);
 
     //get products by category
-    List<ProductDto> getProductByCategoryId(UUID uuid);
+    List<ProductDto> getProductByCategoryId(UUID id);
 }

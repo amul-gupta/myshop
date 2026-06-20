@@ -11,7 +11,7 @@ public class CategoryMapper {
     public Category toEntity(CategoryDto categoryDto)
     {
         return Category.builder()
-                .uuid(categoryDto.getUuid())
+                .id(categoryDto.getId())
                 .title(categoryDto.getTitle())
                 .build();
     }
@@ -21,7 +21,7 @@ public class CategoryMapper {
     public CategoryDto toDto(Category category)
     {
         return CategoryDto.builder()
-                .uuid(category.getUuid())
+                .id(category.getId())
                 .title(category.getTitle())
                 .build();
     }

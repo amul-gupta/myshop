@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 @FeignClient(name = "INVENTORY-SERVICE")
 public interface InventoryClient {
 
-    @PostMapping("/api/inventory/check")
+    @PostMapping("/inventories/check")
     Boolean checkStock(@RequestBody InventoryRequest request);
 
-    @PostMapping("/api/inventory/update")
+    @PostMapping("inventories/update")
     void updateStock(@RequestBody InventoryRequest request);
 
 

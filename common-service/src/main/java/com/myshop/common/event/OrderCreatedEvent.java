@@ -1,19 +1,21 @@
 package com.myshop.common.event;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
 import java.math.BigDecimal;
-import java.time.Instant;
+import java.util.UUID;
 
-@Data
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Builder
 public class OrderCreatedEvent {
 
-    private String eventId;
-    private Long orderId;
-    private Long userId;
-    private BigDecimal totalAmount;
-    private String status;
-    private Instant createdAt;
+    private UUID orderId;
+    private UUID userId;
+    private BigDecimal amount;
+    private String paymentMethod;
+
 }

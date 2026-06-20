@@ -97,7 +97,7 @@ public class ProductServiceImpl implements ProductService {
     public List<ProductDto> getProductByCategoryId(UUID uuid) {
 
         List<Product> productList =
-                productRepository.findByCategoryUuid(uuid);
+                productRepository.findByCategoryId(uuid);
 
         return productList.stream()
                 .map(productMapper::toDto)

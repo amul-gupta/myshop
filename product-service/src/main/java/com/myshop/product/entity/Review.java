@@ -18,7 +18,7 @@ public class Review {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID uuid;
+    private UUID id;
 
     private String title;
     private String comment;
